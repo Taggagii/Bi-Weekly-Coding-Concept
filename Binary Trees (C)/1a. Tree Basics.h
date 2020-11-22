@@ -59,11 +59,3 @@ Node *makeTree(int levels)
     makeTreeFunctional(root, 0, levels - 1);
     return root;
 }
-
-int main()
-{
-    //simple usage of above concepts
-    Node *root = makeTree(4);
-    printTree(root);
-    return 0;
-}
