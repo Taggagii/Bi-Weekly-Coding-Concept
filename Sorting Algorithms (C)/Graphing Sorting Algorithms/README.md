@@ -28,6 +28,8 @@
 22. Navigate to your SDL folder from step 3, and enter into _lib/x86_, you should see a .dll file, copy this file into the same folder (in your Visual Studio project folder) you used in step 4
 23. Run the code by pressing f5, _Debug_ > _Start Debugging_, or by clicking the green "play button" at the top.
 
+# How to make
+
 ###### *For mac*
 #### REQUIREMENTS
 - [SDL2](https://www.libsdl.org/download-2.0.php)
