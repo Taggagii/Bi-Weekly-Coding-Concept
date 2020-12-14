@@ -1,17 +1,11 @@
-# General Description
-This repository contains games coded in C utilizing the SDL2 Graphics Library. The games are far from perfect and provide only simple examples of different C coding techniques and concepts.
-My goal in creating these graphical masterpieces was to further my understanding and increase my comfort in C. It was not my intent to take credit for any of these titles, nor was it to slander the original creators. Anyway, enjoy these pixelated abominations. 
-
-Anyone harmed in the making of these games can contact me...somehow...and explain their complaint directly. I'm sure I can help mitigate the pain I have caused.
-<p>&nbsp;</p>
-
 # How to make
+
 ###### *For windows*
 ### Setting up SDL2
 1. Download [Visual Studios for Windows](https://visualstudio.microsoft.com/downloads/)
 2. Download [SDL2](https://www.libsdl.org/release/SDL2-devel-2.0.12-VC.zip) for Visual Studios (Visual C++) 
 3. Unzip the SDL2 file and put the resulting folder somewhere safe do **NOT** leave it in your downloads folder
-4. Create a Visual Studios project and add all the game files into the folder named after your project (**make sure the files show up under _source files_ in your solution explorer or the following steps won't work**)
+4. Create a Visual Studios project and add all the files into the folder named after your project (**make sure the files show up under _source files_ in your solution explorer or the following steps won't work**)
 5. Click on _project_, then, at the bottom, properties
 6. Now, in properties, select _VC++ directories_
 7. Select _include directories_, press the downward arrow (on the far right), press <Edit...>
@@ -32,16 +26,9 @@ Anyone harmed in the making of these games can contact me...somehow...and explai
                 SDl2main.lib<br/>
 21. Click __Apply__ then __ok__
 22. Navigate to your SDL folder from step 3, and enter into _lib/x86_, you should see a .dll file, copy this file into the same folder (in your Visual Studio project folder) you used in step 4
-22. Finally, for each game, enter the _Game_Values.h_ file and find the `#include <SDL2/SDL.h>` line, change this to be `#include <SDL.h>`
 23. Run the code by pressing f5, _Debug_ > _Start Debugging_, or by clicking the green "play button" at the top.
 
-### Game Alterations
-#### Tetis
-The block will fail to fall, change the line `int speedUpInterval = 90000;` to `int speedUpInterval = 1000;`
-#### Connect Four
-Is broken. It uses includes which are only usable on Mac. This was a poor choice on my part and is the only game which seems not to run
-<p>&nbsp;</p>
-
+# How to make
 
 ###### *For mac*
 #### REQUIREMENTS
@@ -56,7 +43,7 @@ cd where/you/store/the/folder
 ```
 #### Create executable file
 ```console
-clang "GameName".c -std=gnu17 -lSDL2 -o play
+clang "File Name".c -std=gnu17 -lSDL2 -o play
 ```
 
 #### Run the executable
