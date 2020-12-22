@@ -48,7 +48,7 @@ void pushNode(Node* head, int values[])
 	Node* tempHead = head;
 	while (tempHead->next != NULL)
 	{
-		tempHead->next;
+		tempHead = tempHead->next;
 	}
 	tempHead->next = createNode(values);
 }
