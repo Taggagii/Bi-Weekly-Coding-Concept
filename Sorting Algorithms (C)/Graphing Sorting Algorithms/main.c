@@ -1,10 +1,12 @@
 #include "values.h"
 
 /*
-FUNDAMENTAL ISSUE / FUTURE FIX:
+FUNDAMENTAL PROBLEM:
 -this could be done without a linked list. simply do the sorting algorithm, and then graph each array by passing the renderer. Sure, it would be possibly unstable, and this method can be 
 checked over for errors in an easier way. But, I suggest you make both versions
 */
+
+
 
 
 
@@ -130,6 +132,7 @@ int selectionSort(int values[], Node **head)
 	int comparisionsCounter = 0;
 	for (int i = 0; i < length; i++) //every value must be checked for, change the starting point everytime you sort one
 	{
+		addNode(head, values);
 		int min = i;
 		comparisionsCounter += length - (i + 1);
 		for (int ii = i + 1; ii < length; ii++)
@@ -146,7 +149,38 @@ int selectionSort(int values[], Node **head)
 	return comparisionsCounter;
 }
 
-enum sortingAlgorithmTypes { type_QuickSort = 0, type_SelectionSort };
+int bubbleSort(int values[], Node** head) //hah, this is a really impracticle sorting algorithm
+{
+	int runningLength = length - 1;
+	int comparisionsCounter = 0;
+	while (1)
+	{
+		int newLength = 0;
+		comparisionsCounter += runningLength * 2;
+		
+		for (int i = 0; i < runningLength; i++)
+		{
+			if (i % 100 == 0) addNode(head, values);
+			if (values[i] > values[i + 1])
+			{
+				values[i] ^= values[i + 1];
+				values[i + 1] ^= values[i];
+				values[i] ^= values[i + 1];
+				newLength = i;
+			}
+		}
+		runningLength = newLength;
+		if (!(runningLength > 1))
+		{
+			break;
+		}
+	}
+	return comparisionsCounter;
+}
+
+
+
+enum sortingAlgorithmTypes { type_QuickSort = 0, type_SelectionSort, type_BubbleSort };
 
 typedef struct OutputValues_b
 {
@@ -193,6 +227,12 @@ OutputValues *graphSorting(SDL_Renderer *renderer, enum sortingAlgorithmTypes so
 			printf("SelectionSort\n");
 			starting = clock();
 			output->comparisions = selectionSort(values, &output->head);
+			ending = clock();
+			break;
+		case type_BubbleSort:
+			printf("BubbleSort\n");
+			starting = clock();
+			output->comparisions = bubbleSort(values, &output->head);
 			ending = clock();
 			break;
 		default:
@@ -250,7 +290,10 @@ int main()
 	//tesitng
 	graphSorting(renderer, type_SelectionSort);
 	graphSorting(renderer, type_QuickSort);
-	
+	graphSorting(renderer, type_BubbleSort);
+	SDL_Delay(1000);
+
+
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 	return 0;
